@@ -10,6 +10,7 @@ public class Pair {
         this.to = to;
     }
 
+    // Pairインスタンスをハッシュテーブルのキーとして使うには、equalsメソッドとhashCodeメソッドを実装しなければならない。
     public boolean equals(Object object) {
 
         Pair pair = (Pair) object;
@@ -17,7 +18,7 @@ public class Pair {
 
     }
 
-    public int hasCode() {
+    public int hashCode() {
         return 0;
     }
 

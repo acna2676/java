@@ -1,5 +1,7 @@
 package money;
 
+import javax.print.event.PrintJobListener;
+
 class Money implements Expression {
     protected int amount;
     protected String currency;
@@ -9,16 +11,15 @@ class Money implements Expression {
         this.currency = currency;
     }
 
-    Money times(int multiplier) {
+    Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     };
 
-    Expression plus(Money addend) {
+    public Expression plus(Expression addend) {
         return new Sum(this, addend);
     };
 
     public Money reduce(Bank bank, String to) {
-        // return this;
         int rate = bank.rate(currency, to);
         return new Money(amount / rate, to);
     }
